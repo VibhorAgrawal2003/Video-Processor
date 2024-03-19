@@ -5,6 +5,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+from components.labels import AspectLabel
 
 class VideoProcessor(QWidget):
     def __init__(self):
@@ -13,6 +14,8 @@ class VideoProcessor(QWidget):
       super().__init__()
 
       # Define properties
+      self.setWindowTitle("Video Processor")
+      self.setMaximumSize(1024, 768)
       self.mode = "color"
       self.capture_frame = False
       self.video_enabled = True
@@ -30,8 +33,8 @@ class VideoProcessor(QWidget):
       self.btn_label_edge_disable = self.fetch_values("btn_label", "edge_disable")
 
       # Create components
-      self.setWindowTitle("Video Processor")
-      self.video_frame = QLabel()
+      self.video_box = QGroupBox()
+      self.video_frame = AspectLabel()
       self.pause_button = QPushButton()
       self.invert_button = QPushButton()
       self.save_button = QPushButton()
@@ -44,7 +47,9 @@ class VideoProcessor(QWidget):
       self.ed_threshold_label1 = QLabel()
       self.ed_threshold_label2 = QLabel()
 
-      # Define component properties
+      # Define component object names
+      self.video_box.setObjectName("VideoBox")
+
       self.pause_button.setText(self.btn_label_pause)
       self.invert_button.setText(self.btn_label_invert)
       self.save_button.setText(self.btn_label_save)
@@ -65,6 +70,11 @@ class VideoProcessor(QWidget):
       self.ed_threshold_slider2.setMinimum(0)
       self.ed_threshold_slider2.setMaximum(255)
       self.ed_threshold_slider2.setValue(200)
+
+      # Video display layout
+      disp_layout = QVBoxLayout()
+      disp_layout.addWidget(self.video_frame)
+      self.video_box.setLayout(disp_layout)
 
       # Control buttons layout
       btn_row_1 = QHBoxLayout()
@@ -104,7 +114,7 @@ class VideoProcessor(QWidget):
 
       # Define parent layout
       layout = QVBoxLayout()
-      layout.addWidget(self.video_frame)
+      layout.addWidget(self.video_box)
       layout.addLayout(btn_layout)
       layout.addLayout(gs_layout)
       layout.addLayout(ed_layout)
@@ -148,6 +158,7 @@ class VideoProcessor(QWidget):
     # Invert button
     def invert_video(self):
       self.video_inverted = not self.video_inverted
+      print("Button pressed: Video stream inverted.")
 
     # Save button
     def enable_capture(self):
