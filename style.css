@@ -12,7 +12,11 @@ QPushButton {
   background-color: #bb86fc;
   color: #23036a;
   font-size: 18px;
-  border-width: 2px;
+  border-width: 0px;
+}
+
+QPushButton:hover {
+  border-top-width: 2px;
 }
 
 QSlider::handle {
@@ -33,7 +37,6 @@ QSlider::handle:hover {
 
 QGroupBox#VideoBox {
   border: 4px solid #23036a;
-  padding: 0;
 }
 
 QLabel#VerticalGap {

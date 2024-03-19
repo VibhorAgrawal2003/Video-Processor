@@ -3,6 +3,7 @@
     "pause" : "Pause video stream",
     "start" : "Start video stream",
     "invert" : "Invert camera",
-    "save" : "Save current frame"
+    "save" : "Save current frame",
+    "modes" : ["Color", "Grayscale", "Binary", "Edge detection", "Sepia Tone", "Blur"]
   }
 }
