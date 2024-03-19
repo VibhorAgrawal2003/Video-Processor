@@ -1,5 +1,5 @@
 QLabel {
-  font-size: 16px;
+  font-size: 18px;
   color: #23036a;
 }
 
@@ -12,9 +12,30 @@ QPushButton {
   background-color: #bb86fc;
   color: #23036a;
   font-size: 18px;
+  border-width: 2px;
 }
 
-QGroupBox {
+QSlider::handle {
+  /* color: #bb86fc; */
+  background-color: #bb86fc;
+  border-left: 0 solid #23036a;
+  border-top: 0 solid #23036a;
+  border-right: 1.5px solid #23036a;
+  border-bottom: 1.5px solid #23036a;
+}
+
+QSlider::handle:hover {
+  border-left-width: 1.5px;
+  border-top-width: 1.5px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+
+QGroupBox#VideoBox {
   border: 4px solid #23036a;
   padding: 0;
+}
+
+QLabel#VerticalGap {
+  padding: 8px 0;
 }
