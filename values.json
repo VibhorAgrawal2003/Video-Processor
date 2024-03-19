@@ -1,0 +1,12 @@
+{
+  "btn_label" : {
+    "pause" : "Pause the video stream",
+    "start" : "Start the video stream",
+    "color" : "Enable color mode",
+    "grayscale" : "Enable grayscale mode",
+    "edge_enable" : "Enable edge detection",
+    "edge_disable" : "Disable edge detection",
+    "invert" : "Invert camera",
+    "save" : "Save current frame"
+  }
+}
