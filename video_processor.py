@@ -30,6 +30,12 @@ class VideoProcessor(QWidget):
     self.btn_label_save = self.fetch_values("btn_label", "save")
     self.btn_label_modes = self.fetch_values("btn_label", "modes")
 
+    self.sld_label_hue = self.fetch_values("sld_label", "hue")
+    self.sld_label_sat = self.fetch_values("sld_label", "sat")
+    self.sld_label_bri = self.fetch_values("sld_label", "bri")
+    self.sld_label_bin = self.fetch_values("sld_label", "bin")
+    self.sld_label_edge = self.fetch_values("sld_label", "edge")
+
     # Create components
     self.video_box = QGroupBox()
     self.video_frame = AspectLabel()
@@ -119,7 +125,7 @@ class VideoProcessor(QWidget):
 
     # Hue settings layout
     hue_layout = QVBoxLayout()
-    hue_layout.addWidget(QLabel('Hue Slider'))
+    hue_layout.addWidget(QLabel(self.sld_label_hue))
     hue_row_1 = QHBoxLayout()
     hue_row_1.addWidget(self.hue_slider)
     hue_row_1.addWidget(self.hue_label)
@@ -127,7 +133,7 @@ class VideoProcessor(QWidget):
 
     # Saturation settings layout
     sat_layout = QVBoxLayout()
-    sat_layout.addWidget(QLabel('Saturation Slider'))
+    sat_layout.addWidget(QLabel(self.sld_label_sat))
     sat_row_1 = QHBoxLayout()
     sat_row_1.addWidget(self.saturation_slider)
     sat_row_1.addWidget(self.saturation_label)
@@ -135,7 +141,7 @@ class VideoProcessor(QWidget):
 
     # Saturation settings layout
     bri_layout = QVBoxLayout()
-    bri_layout.addWidget(QLabel('Brightness Slider'))
+    bri_layout.addWidget(QLabel(self.sld_label_bri))
     bri_row_1 = QHBoxLayout()
     bri_row_1.addWidget(self.brightness_slider)
     bri_row_1.addWidget(self.brightness_label)
@@ -143,7 +149,7 @@ class VideoProcessor(QWidget):
 
     # Binary settings layout
     bin_layout = QVBoxLayout()
-    bin_layout.addWidget(QLabel('Binary Threshold Slider'))
+    bin_layout.addWidget(QLabel(self.sld_label_bin))
     bin_row_1 = QHBoxLayout()
     bin_row_1.addWidget(self.bin_threshold_slider)
     bin_row_1.addWidget(self.bin_threshold_label)
@@ -151,13 +157,13 @@ class VideoProcessor(QWidget):
 
     # Edge detection settings layout
     ed_layout = QVBoxLayout()
-    ed_layout.addWidget(QLabel('Edge Detection Low Threshold Slider'))
+    ed_layout.addWidget(QLabel(self.sld_label_edge["low"]))
     ed_row_1 = QHBoxLayout()
     ed_row_1.addWidget(self.ed_threshold_slider1)
     ed_row_1.addWidget(self.ed_threshold_label1)
     ed_layout.addLayout(ed_row_1)
 
-    ed_layout.addWidget(QLabel('Edge Detection High Threshold Slider'))
+    ed_layout.addWidget(QLabel(self.sld_label_edge["high"]))
     ed_row_2 = QHBoxLayout()
     ed_row_2.addWidget(self.ed_threshold_slider2)
     ed_row_2.addWidget(self.ed_threshold_label2)

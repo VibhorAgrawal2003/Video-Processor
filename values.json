@@ -5,5 +5,16 @@
     "invert" : "Invert camera",
     "save" : "Save current frame",
     "modes" : ["Color", "Grayscale", "Binary", "Edge detection", "Sepia Tone", "Blur"]
+  },
+
+  "sld_label" : {
+    "hue" : "Adjust Hue",
+    "sat" : "Adjust Saturation",
+    "bri" : "Adjust Brightness",
+    "bin" : "Binary Value",
+    "edge" : {
+      "low" : "Edge Detection Low Value",
+      "high" : "Edge Detection High Value"
+    }
   }
 }

@@ -37,7 +37,7 @@ QGroupBox#VideoBox {
 }
 
 QLabel#VerticalGap {
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 QLabel#HorizontalGap {
