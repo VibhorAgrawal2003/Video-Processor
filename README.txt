@@ -41,12 +41,12 @@ The application provides various buttons and sliders to change the video display
 - Pause/Start video stream: Start or Stop the video display.
 - Invert camera: Flips the video display horizontally.
 - Save current frame: Save the current video frame to any directory.
-- Color: Set display mode to color (default), by increasing saturation to max.
-- Grayscale: Set display mode to grayscale, by reducing saturation to zero.
+- Color: Set display mode to color (default), by adjusting hue and saturation.
+- Grayscale: Set display mode to grayscale, by adjusting saturation to zero.
 - Binary: Set display mode to binary, adjust amount of black & white detected using the binary threshold slider.
 - Edge detection: Set display mode to edge detection. Use the two edge detection sliders to adjust the 'low' and 'high' threshold values for the Canny Algorithm.
-- Sepia Tone: Set display mode to sepia tone, a basic image filter using matrix transform.
-- Blur: Set display mode to blur, another basic image filter which adds a small amount of blur to the frame.
+- Sepia Tone: Set display mode to sepia tone.
+- Blur: Set display mode to blur.
 
 ====================================
 
