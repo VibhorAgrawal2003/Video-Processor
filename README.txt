@@ -2,7 +2,7 @@
 #       Video Processor            #
 ####################################
 
-The Video Processor is a video capture and processing application designed to connect to the webcam or any other default capture peripheral connected to the device and display the video feed in real-time. Users can save individual frames from the video and apply various effects to enhance or modify the video stream.
+This is a video capture and processing application designed to connect to the webcam or any other default capture peripheral connected to the device and display the video feed in real-time. Users can save individual frames from the video and apply various effects to enhance or modify the video stream.
 
 ====================================
 
@@ -41,12 +41,12 @@ The application provides various buttons and sliders to change the video display
 - Pause/Start video stream: Start or Stop the video display.
 - Invert camera: Flips the video display horizontally.
 - Save current frame: Save the current video frame to any directory.
-- Color: Set display mode to color (default).
-- Grayscale: Set display mode to grayscale. Use the grayscale threshold slider to adjust B/W pixel detection.
+- Color: Set display mode to color (default), by increasing saturation to max.
+- Grayscale: Set display mode to grayscale, by reducing saturation to zero.
+- Binary: Set display mode to binary, adjust amount of black & white detected using the binary threshold slider.
 - Edge detection: Set display mode to edge detection. Use the two edge detection sliders to adjust the 'low' and 'high' threshold values for the Canny Algorithm.
-- Sepia Tone: Set display mode to sepia tone.
-- Sharpen: Set display mode to sharpen.
-- Blur: Set display mode to blur.
+- Sepia Tone: Set display mode to sepia tone, a basic image filter using matrix transform.
+- Blur: Set display mode to blur, another basic image filter which adds a small amount of blur to the frame.
 
 ====================================
 

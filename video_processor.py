@@ -72,18 +72,18 @@ class VideoProcessor(QWidget):
 
     self.hue_slider.setOrientation(1)
     self.hue_slider.setMinimum(0)
-    self.hue_slider.setMaximum(255)
-    self.hue_slider.setValue(255)
+    self.hue_slider.setMaximum(100)
+    self.hue_slider.setValue(50)
 
     self.saturation_slider.setOrientation(1)
     self.saturation_slider.setMinimum(0)
-    self.saturation_slider.setMaximum(255)
-    self.saturation_slider.setValue(255)
+    self.saturation_slider.setMaximum(100)
+    self.saturation_slider.setValue(50)
 
     self.brightness_slider.setOrientation(1)
     self.brightness_slider.setMinimum(0)
-    self.brightness_slider.setMaximum(255)
-    self.brightness_slider.setValue(255)
+    self.brightness_slider.setMaximum(100)
+    self.brightness_slider.setValue(50)
 
     self.bin_threshold_slider.setOrientation(1)
     self.bin_threshold_slider.setMinimum(0)
@@ -254,10 +254,12 @@ class VideoProcessor(QWidget):
     self.mode = mode_button.text()
     print(f"Button Pressed: Mode set to {self.mode}.")
 
-    if self.mode == self.btn_label_modes[0]:
-      self.saturation_slider.setValue(255) # Color
-    elif self.mode == self.btn_label_modes[1]:
-      self.saturation_slider.setValue(0) # Grayscale
+    if self.mode == self.btn_label_modes[0]: # Color
+      self.hue_slider.setValue(50)
+      self.saturation_slider.setValue(50)
+    elif self.mode == self.btn_label_modes[1]: # Grayscale
+      self.hue_slider.setValue(50)
+      self.saturation_slider.setValue(0)
 
   # Save video frames
   def save_image(self):
@@ -301,19 +303,21 @@ class VideoProcessor(QWidget):
 
 
       # Set hue, saturation, brightness
-      hue_value = self.hue_slider.value()
-      brightness_value = self.brightness_slider.value()
-      saturation_value = self.saturation_slider.value()
+      hue_value = self.hue_slider.value() / 100
+      brightness_value = self.brightness_slider.value() / 100
+      saturation_value = self.saturation_slider.value() / 100
 
       self.hue_label.setText(str(hue_value))
       self.brightness_label.setText(str(brightness_value))
       self.saturation_label.setText(str(saturation_value))
 
-      frame_hsv[:, :, 0] = frame_hsv[:, :, 0] * (hue_value/255)
-      frame_hsv[:, :, 1] = frame_hsv[:, :, 1] * (saturation_value/255)
-      frame_hsv[:, :, 2] = frame_hsv[:, :, 2] * (brightness_value/255)
+      frame_hsv[:, :, 0] = np.clip(frame_hsv[:, :, 0] * (hue_value/127), 0, 1) * 255
+      frame_hsv[:, :, 1] = np.clip(frame_hsv[:, :, 1] * (saturation_value/127), 0, 1) * 255
+      frame_hsv[:, :, 2] = np.clip(frame_hsv[:, :, 2] * (brightness_value/127), 0, 1) * 255
       frame_bgr = cv2.cvtColor(frame_hsv, cv2.COLOR_HSV2BGR)
       frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
+      frame_rgb = np.clip(frame_rgb, 0, 255)
+
 
 
       # Set binary threshold from threshold slider
@@ -371,6 +375,10 @@ class VideoProcessor(QWidget):
           mode_btn.setStyleSheet("background-color: #985eff;")
         else:
           mode_btn.setStyleSheet("background-color: #bb86fc;")
+
+        if self.mode == self.btn_label_modes[1]:
+          if saturation_value != 0:
+            mode_btn.setStyleSheet("background-color: #bb86fc;")
         
 
       # Convert selected frame to pixel map
