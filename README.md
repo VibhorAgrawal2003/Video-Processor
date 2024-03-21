@@ -3,11 +3,11 @@
 This is a video capture and processing application designed to connect to the webcam or any other default capture peripheral connected to the device and display the video feed in real-time. Users can save individual frames from the video and apply various effects to enhance or modify the video stream.
 <br>
 
-### How It Works
+## How It Works
 The Video Processor application utilizes the PyQT5 framework for building the graphical user interface and CSS styling to enhance the visual appearance of the end-user application. Image processing is performed using the OpenCV library, providing efficient and powerful tools for manipulating video frames.
 <br>
 
-### Getting Started
+## Getting Started
 To start using the Video Processor application, follow these steps:
 
 
